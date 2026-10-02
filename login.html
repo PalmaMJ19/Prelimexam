@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      }
+
+      .login-container {
+        width: 100%;
+        max-width: 420px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 18px;
+        padding: 32px 28px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+      }
+
+      h2 {
+        text-align: center;
+        color: #ffffff;
+        margin-bottom: 8px;
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #dbeafe;
+        margin-bottom: 24px;
+        font-size: 0.95rem;
+      }
+
+      .input-group {
+        margin-bottom: 18px;
+      }
+
+      label {
+        display: block;
+        color: #e2e8f0;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(15, 23, 42, 0.3);
+        color: #ffffff;
+        outline: none;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input::placeholder {
+        color: #bfdbfe;
+      }
+
+      input:focus {
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+      }
+
+      .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 22px;
+        color: #dbeafe;
+        font-size: 0.9rem;
+      }
+
+      .remember {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .remember input {
+        width: auto;
+      }
+
+      a {
+        color: #93c5fd;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      button {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 12px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(59, 130, 246, 0.35);
+      }
+
+      .message {
+        margin-top: 18px;
+        text-align: center;
+        color: #dcfce7;
+        font-size: 0.95rem;
+        min-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <p class="subtitle">Welcome back! Please sign in.</p>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+        </div>
+
+        <div class="options">
+          <label class="remember">
+            <input type="checkbox" name="remember" />
+            <span>Remember me</span>
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit">Sign In</button>
+        <div id="message" class="message"></div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.getElementById('loginForm');
+      const message = document.getElementById('message');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (!username || !password) {
+          message.textContent = 'Please enter both username and password.';
+          message.style.color = '#fca5a5';
+          return;
+        }
+
+        message.textContent = `Welcome, ${username}! Login successful.`;
+        message.style.color = '#dcfce7';
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
